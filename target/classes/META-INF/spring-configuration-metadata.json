@@ -2,8 +2,8 @@
   "groups": [
     {
       "name": "application",
-      "type": "com.bakeameme.config.ApplicationProperties",
-      "sourceType": "com.bakeameme.config.ApplicationProperties"
+      "type": "com.bakeanapi.config.ApplicationProperties",
+      "sourceType": "com.bakeanapi.config.ApplicationProperties"
     }
   ],
   "properties": [],

@@ -13,9 +13,16 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: bakeAnApi
+    instanceId: bakeAnApi:${spring.application.instance-id:${random.value}}
+
 mongock:
   migration-scan-package:
-    - com.bakeameme.config.dbmigrations
+    - com.bakeanapi.config.dbmigrations
   mongo-db:
     read-concern: local
     write-concern:
@@ -23,7 +30,10 @@ mongock:
 
 spring:
   application:
-    name: bakeamemenfs
+    name: bakeAnApi
+  cloud:
+    config:
+      enabled: false
   jackson:
     serialization:
       write-durations-as-timestamps: false
@@ -38,13 +48,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: bakeamemenfs-task-
+      thread-name-prefix: bake-an-api-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: bakeamemenfs-scheduling-
+      thread-name-prefix: bake-an-api-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -61,9 +71,9 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'bakeamemenfsApp'
+    name: 'bakeAnApiApp'
   mail:
-    from: bakeamemenfs@localhost.com
+    from: bakeAnApi@localhost.com
     base-url: http://127.0.0.1:8080
   logging:
     # To test json console appender
@@ -77,7 +87,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: NjQ3NTI0ZjUxNDRjNTQyNjU4YzdlMmIzMGY4OTFkNTA2MzNiMDkyYTc0NzM5Y2VlMWViMzI3Y2VmZWZjZWJiZjA1NzI0NDJiMWE2ZmEwOTFhZmRmODU0ZmRlNzU1ZTY3MWQ0OWQyNTc1OGNmOWEzMGFlOWEzOWRkOWIxZjVkOWU=
+        base64-secret: NThmZDFkYzRhM2MzMTNkYWI4NmM2NzBhMGNkZTliMDllZDA3NzQwODRlZGZhMTAxZjQ0N2FiY2FmMmM4NjQxZGRiZDkzY2JjZmQzNjQ0NmU1YWM2NzgyYmEyMmQyYjYzYjI2NGJjOTYxODYyNmI2ZmY4OWYwMmMzNzc3YmVhMTg=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
 

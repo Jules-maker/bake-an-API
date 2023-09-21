@@ -18,7 +18,15 @@ logging:
     ROOT: DEBUG
     tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
-    com.bakeameme: DEBUG
+    com.bakeanapi: DEBUG
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    enabled: false # By default, the JHipster Registry is not used in the "dev" profile
+    service-url:
+      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
 
 spring:
   devtools:
@@ -30,10 +38,18 @@ spring:
   jackson:
     serialization:
       indent-output: true
+  cloud:
+    config:
+      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+      # name of the config server's property source (file.yml) that we want to use
+      name: bakeAnApi
+      profile: dev
+      label: main # toggle to switch to a different version of the configuration as stored in git
+      # it can be set to any label, branch or commit of the configuration source Git repository
   data:
     mongodb:
-      uri: mongodb+srv://beelinked:nQu0wRuMbAaUPjMy@beelinked.ulxdcu5.mongodb.net/beelinked
-      database: bakeameme
+      uri: mongodb://localhost:27017
+      database: bakeAnApi
   mail:
     host: localhost
     port: 25
@@ -43,6 +59,20 @@ spring:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
     cache: false
+  sleuth:
+    # https://github.com/spring-projects/spring-framework/issues/27844#issuescomment-1002866885
+    # https://github.com/spring-cloud/spring-cloud-sleuth/issues/2094
+    async:
+      enabled: false
+    enabled: false
+    sampler:
+      probability: 1 # report 100% of traces
+  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
+    base-url: http://localhost:9411
+    enabled: false
+    locator:
+      discovery:
+        enabled: true
 
 server:
   port: 8080
@@ -58,6 +88,8 @@ jhipster:
     ehcache: # Ehcache configuration
       time-to-live-seconds: 3600 # By default objects stay 1 hour in the cache
       max-entries: 100 # Number of objects in each cache entry
+  registry:
+    password: admin
   # CORS is only enabled by default with the "dev" profile
   cors:
     # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
@@ -73,7 +105,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)
-        base64-secret: NjQ3NTI0ZjUxNDRjNTQyNjU4YzdlMmIzMGY4OTFkNTA2MzNiMDkyYTc0NzM5Y2VlMWViMzI3Y2VmZWZjZWJiZjA1NzI0NDJiMWE2ZmEwOTFhZmRmODU0ZmRlNzU1ZTY3MWQ0OWQyNTc1OGNmOWEzMGFlOWEzOWRkOWIxZjVkOWU=
+        base64-secret: NThmZDFkYzRhM2MzMTNkYWI4NmM2NzBhMGNkZTliMDllZDA3NzQwODRlZGZhMTAxZjQ0N2FiY2FmMmM4NjQxZGRiZDkzY2JjZmQzNjQ0NmU1YWM2NzgyYmEyMmQyYjYzYjI2NGJjOTYxODYyNmI2ZmY4OWYwMmMzNzc3YmVhMTg=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
