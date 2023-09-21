@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <condition else="false" property="skip.npm" value="true">
+      <and>
+        <available file="checksums.csv" filepath="/Applications/XAMPP/xamppfiles/bakeameme-server/target" />
+        <available file="checksums.csv.old" filepath="/Applications/XAMPP/xamppfiles/bakeameme-server/target" />
+        <filesmatch file2="/Applications/XAMPP/xamppfiles/bakeameme-server/target/checksums.csv.old" file1="/Applications/XAMPP/xamppfiles/bakeameme-server/target/checksums.csv" />
+      </and>
+    </condition>
+  </target>
+</project>
