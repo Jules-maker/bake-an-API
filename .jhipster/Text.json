@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230921144827",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "text",
+  "fields": [
+    {
+      "fieldName": "coordinateX",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinateY",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Text",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "text",
+      "relationshipName": "imageId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

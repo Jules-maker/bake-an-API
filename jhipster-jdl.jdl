@@ -1,0 +1,51 @@
+entity Meme {
+	slot Integer required
+    title String
+    tag Tags
+    isDraft Boolean
+    createdAt Instant
+    updatedAt Instant
+}
+
+entity Image {
+	position Integer
+	url String required
+    createdAt Instant
+    updatedAt Instant
+}
+
+entity Text {
+	coordinateX Integer
+    coordinateY Integer
+    createdAt Instant
+    updatedAt Instant
+}
+
+entity Disposition {
+	name String required
+    sizeRequired Integer required
+    coordinate1X Integer
+    coordinate1Y Integer
+    coordinate2X Integer
+    coordinate2Y Integer
+    coordinate3X Integer
+    coordinate3Y Integer
+    coordinate4X Integer
+    coordinate4Y Integer
+    createdAt Instant
+    updatedAt Instant
+}
+
+enum Tags {
+    CLASSIQUES, POLITIQUES, POP_CULTURE, INTERNET, ANIMAUX, GEEK, REACTION, WTF, FILMS_SERIES, NOSTALGIQUES, CHAT, CHIEN, GAMING, CUISINE, SPORT, EDUCATIFS, DIY, ART
+}
+
+
+relationship OneToMany {
+	Meme to Image{memeId}
+    Meme to Disposition{memeId}
+    Image to Text{ImageId}
+}
+
+paginate Meme, Image, Disposition, Text with infinite-scroll
+// dto * with mapstruct

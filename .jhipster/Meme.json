@@ -1,0 +1,55 @@
+{
+  "applications": "*",
+  "changelogDate": "20230921144825",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "meme",
+  "fields": [
+    {
+      "fieldName": "slot",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "tag",
+      "fieldType": "Tags",
+      "fieldValues": "CLASSIQUES,POLITIQUES,POP_CULTURE,INTERNET,ANIMAUX,GEEK,REACTION,WTF,FILMS_SERIES,NOSTALGIQUES,CHAT,CHIEN,GAMING,CUISINE,SPORT,EDUCATIFS,DIY,ART"
+    },
+    {
+      "fieldName": "isDraft",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Meme",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "image",
+      "otherEntityRelationshipName": "memeId",
+      "relationshipName": "image",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "disposition",
+      "otherEntityRelationshipName": "memeId",
+      "relationshipName": "disposition",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

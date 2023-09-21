@@ -1,0 +1,73 @@
+{
+  "applications": "*",
+  "changelogDate": "20230921144828",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "disposition",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sizeRequired",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "coordinate1X",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinate1Y",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinate2X",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinate2Y",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinate3X",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinate3Y",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinate4X",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "coordinate4Y",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Disposition",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "meme",
+      "otherEntityRelationshipName": "disposition",
+      "relationshipName": "memeId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
